@@ -1,14 +1,10 @@
-{{!-- Wrap plot area in axes --}}
-{{#plot-axes xScale=xScale yScale=yScale margin=margin width=width height=height}}
-    {{!-- Basic scatterplot geometry --}}
+{{#plot-axes xScale=xScale yScale=yScale margin=margin width=width height=height svgWidth=svgWidth svgHeight=svgHeight}}
+
     {{plot-points data=data
                   x=x
                   y=y
-                  color=color
                   xScale=xScale
-                  yScale=yScale
-                  colorScale=colorScale}}
+                  yScale=yScale}}
 
-    {{!-- Allow for additional layers --}}
-    {{yield this}}
+    {{yield}}
 {{/plot-axes}}

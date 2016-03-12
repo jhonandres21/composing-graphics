@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'composing-graphics',
+    modulePrefix: 'graphics-component',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
