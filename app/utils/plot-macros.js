@@ -10,11 +10,10 @@ export function makeLinearScale(domain, range) {
     .range(range);
 }
 
-export function linearScale(dataKey, propKey, rangeMin, rangeMax, padding) {
+export function linearScale(dataKey, propKey, rangeMin, rangeMax, padding){
 
-  var args = Array.prototype.slice.call(arguments).filter(isString);
-  args[0] = `${dataKey}.@each`;
-  args.push(function() {
+  return Ember.computed('dataKey.@each', 'propKey', 'rangeMin', 'rangeMax', function(){
+
     var xs = this.get(dataKey).mapBy(this.get(propKey));
     var domain = d3.extent(xs);
     var r0 = isString(rangeMin) ? this.get(rangeMin) : rangeMin;
@@ -28,6 +27,5 @@ export function linearScale(dataKey, propKey, rangeMin, rangeMax, padding) {
 
     return makeLinearScale(domain, [r0, r1]);
   });
-
-  return Ember.computed.apply(this, args);
+ 
 }
